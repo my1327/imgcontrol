@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form id="form1" action="image/upload" method="post"
+			enctype="multipart/form-data">
+			<input type="file" name="file" width:"300px" value="查询" /> 
+<!-- 			<input type="submit" name="submit" /> -->
+		</form>
+		<input type="button" value="提交" onclick="submit()" />
+	</div>
+</body>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/jquery.form.js"></script>
+
+<script>
+	function submit() {
+		$("#form1").ajaxSubmit({
+			type : "POST",
+			url : "image/upload.ds",
+			dataType : "json",
+			success : function(data, states, result) {
+				alert(data);
+			},
+			error : function(data) {
+				alert(data);
+			}
+		});
+	}
+	var data={
+			id:1,
+			name:"gree"
+	}
+	
+	$.get("test/get?id=1&name=yaohong", null, function(result){
+		alert(result);
+	}); 
+	
+// 	$.post("test/list", data, function(result){
+// 		alert(result);
+// 	})
+</script>
+</html>

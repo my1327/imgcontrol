@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form id="form1" action="image/upload" method="post"
+			enctype="multipart/form-data">
+			<input id="fileInput" type="file" name="file" value="查询" />
+			<!-- 			<input type="submit" name="submit" /> -->
+		</form>
+		<input type="button" value="提交" onclick="submit()" /> <input
+			type="button" value="设置单选" onclick="removeFileInputAttr()" /> <input
+			type="button" value="设置多选" onclick="setFileInputAttr()" /> <input
+			type="button" value="删除" onclick="remove()" />
+	</div>
+</body>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/jquery.form.js"></script>
+
+<script>
+	var fileList;
+	var fileIndex = 0;
+	var options = {
+		target : '#output1',
+		beforeSubmit : beforeSubmit,
+		success : function(data, states, result) {
+			submitted(data, false);
+		},
+		error : function(data) {
+			submitted(data, true);
+		},
+		type : "POST",
+		url : "image/upload.ds",
+		dataType : "json"
+	};
+	function beforeSubmit(formData, jqForm, options) {
+		formData[0].value = options.file;
+		return true;
+	}
+
+	function submitted(data, hasError) {
+		++fileIndex;
+		if (fileIndex < fileList.length) {
+			console.log("Current index: " + fileIndex);
+			submit(fileIndex);
+		} else
+			uploadCompleted();
+	}
+
+	function uploadCompleted() {
+		fileIndex = 0;
+		alert("Completed!");
+	}
+
+	function submit(index) {
+		options.file = fileList[index];
+		$("#form1").ajaxSubmit(options);
+	}
+
+	var inputElement = document.getElementById("fileInput");
+	inputElement.addEventListener("change", handleFiles, false);
+
+	function handleFiles() {
+		fileList = this.files;
+		fileIndex = 0;
+		submit(fileIndex);
+	}
+
+	function setFileInputAttr() {
+		document.getElementById("fileInput").setAttribute("multiple",
+				"multiple");
+	}
+	function removeFileInputAttr() {
+		document.getElementById("fileInput").removeAttribute("multiple");
+	}
+	function remove() {
+		data = {
+			id : "fea9744b046546a09f5b1780907a60c2"
+		};
+		$.post("image/remove.ds", data, function(result) {
+			alert(result);
+		})
+	}
+
+	$.get("image/get.ds?page=0&size=5", null, function(result) {
+		 		alert(result);
+	})
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="diva">
+		a<input id="in1" type="text" data-bind="value: input1" />
+	</div>
+
+	<div id="divb">
+		b<input id="in2" type="text" data-bind="value: input2" />
+	</div>
+	
+	<div>
+		<input type="button" onclick="removemo()" value="remove" /> <input
+			type="button" onclick="addmo()" value="add" /> <input type="button"
+			onclick="showmo()" value="show" />
+	</div>
+</body>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/knockout-3.4.0.js"></script>
+<script>
+	var m1 = new mo1();
+	var m2 = new mo2();
+
+	function mo1() {
+		var self = this;
+		self.input1 = ko.observable("aaa");
+	}
+
+	function mo2() {
+		var self = this;
+		self.input2 = ko.observable("bbb");
+	}
+
+	ko.applyBindings(m1, document.getElementById("diva"));
+	ko.applyBindings(m2, document.getElementById("divb"));
+
+	function removemo() {
+		ko.cleanNode(document.getElementById("diva"));
+	}
+
+	function addmo() {
+		ko.applyBindings(m1, document.getElementById("diva"));
+	}
+	function showmo() {
+		alert("knouckout:  " + m1.input1() + "   " + m2.input2()
+				+ "    input:      " + document.getElementById("in1").value
+				+ "   " + document.getElementById("in2").value);
+
+	}
+</script>
+</html>

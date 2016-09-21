@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>图片控制</title>
+	<link rel="stylesheet" href="img.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="leftContainer">
+				<input id="loadInput" type="file" name="file"/>
+				<input id="subInput" type="button" value="确认" onclick="submit()"/>
+			</div>
+			<div class="imgContainer" data-bind="foreach:Imgs">
+				<form id="form1" action="image/upload" method="post" enctype="multipart/form-data">
+					<ul>
+						<li>
+							<div class="imgBox"><a href="#"><img src="" data-bind="attr:{src:imgUrl}"/></a><input type="checkbox" id="deleteImg"></div>
+						</li>
+					</ul>	
+				</form>
+			</div>	
+		</div>
+	</body>
+	<script src="res/js/knockout-3.4.0.js"></script>
+	<script src="res/js/jquery.min.js"></script>
+	<script src="res/js/jquery.form.js"></script>
+	<script type="text/javascript">
+		var imgObj = new ShopImg();		
+		function ShopImg() {
+			var self = this;
+			self.Imgs = ko.observableArray([]);
+			
+		    self.removeImg = function() {
+		        self.Imgs.remove(this);
+		    }; 
+		}
+		
+		ko.applyBindings(imgObj);
+		
+		$("#loadInput").change(function() {
+			submitImg();
+		});  
+		
+		function submitImg() {
+			var UpLoadUrl = "/<%=basePath%>/image/upload";	
+			
+			$("#form1").ajaxSubmit({
+				type : "POST",
+				url : UpLoadUrl,
+				dataType : "json",
+				success : function(data, states, result) {
+					var obj = $.parseJSON(data);
+					//alert("result:"+obj.url);
+					
+					var imgurl = obj.url;
+					
+				 	shopObj.Imgs.push({
+						"imgUrl" : imgurl
+					});
+				},
+				error : function(){
+					alert("对不起，添加图片失败！");
+				}
+			});
+		}
+		
+		function submit() {
+			$("#form1").ajaxSubmit({
+				type : "POST",
+				url : "image/upload.ds",
+				dataType : "json",
+				success : function(data, states, result) {
+					var imgobj = $.parseJSON(data);
+					imgObj.Imgs.push({
+						"imgUrl" : imgobj
+					});
+				},
+				error : function(data) {
+					alert(data);
+				}
+			});
+		}
+	</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../res/css/upload.css"/>
+</head>
+<body>
+<div class="upLoad_wrap clearFix">
+    <div class="close clearFix">
+        <input class="fr" type="button" value="x">
+    </div><!--close-->
+    <div class="upLoad_content fl"  data-bind="foreach:upload">
+        <img data-bind="attr:{src:src}">
+    </div><!--upLoad_content-->
+    <div class="upLoad_button fr">
+        <input type="file">
+    </div><!--upLoad_button-->
+    <div class="upLoad_confirm fl">
+        <input type="button" value="确认">
+    </div><!--upLoad_confirm-->
+</div><!--upLoad_wrap-->
+</body>
+<script src="../res/js/jquery.min.js"></script>
+<script src="../res/js/knockout-3.4.0.js"></script>
+<script>
+    ko.applyBindings({
+        upload:[
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'},
+            {src:'alltype.png'}
+        ]
+    })
+</script>
+</html>

@@ -1,0 +1,248 @@
+/*
+默认样式重置*/
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, filter, table, td, img, div, dl, dt, dd, input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 13px;
+    position: relative;
+    font-family: "微软雅黑";
+    color: #333;
+    overflow-y: scroll;
+}
+
+img {
+    border: none;
+}
+
+li {
+    list-style: none;
+}
+
+input, select, textarea {
+    outline: none;
+    border: none;
+    background: none; /* 针对ie6做的处理 */
+}
+
+textarea {
+    resize: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* 清浮动 */
+.clearFix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.clearFix {
+    zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.comWidth {
+    width: 1210px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mb_50 {
+    margin-bottom: 50px;
+}
+.mb_20 {
+    margin-bottom: 20px;
+}
+
+/* header */
+header {
+    width: 100%;
+    min-width: 1210px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #eee;
+}
+
+.header_top {
+    width: 1210px;
+    min-width: 1210px;
+    height: 50px;
+    margin: 0 auto;
+    color: #666;
+    line-height: 50px;
+}
+
+.header_logo {
+    width: 50%;
+    height: 50px;
+    float: left;
+    margin-left: 5px;
+    line-height: 50px;
+}
+
+.header_logo img {
+    width: 46px;
+    height: 24px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 13px;;
+}
+
+.header_logo p {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+.header_login {
+    width: auto;
+    height: 50px;
+    float: right;
+}
+
+.header_login a {
+    float: left;
+    margin-right: 42px;
+    color: #666;
+}
+
+.header_login a:hover {
+    color: #abd45b;
+}
+
+.header_login p {
+    float: left;
+    margin-right: 10px;
+}
+
+.header_login span {
+    color: #f00;
+    margin-left: 10px;
+}
+
+/* manage */
+.manage {
+    width: 100%;
+    height: 34px;
+    margin-top: 17px;
+}
+
+.manage_left {
+    height: 34px;
+    width: 390px;
+    border-bottom: 1px solid #abd45b;
+}
+
+.manage_left li {
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    width: 130px;
+    text-align: center;
+}
+
+.manage_left .active {
+    width: 130px;
+    height: 48px;
+    background: url("../img/manage_bg.png") no-repeat;
+}
+
+.manage_left li a {
+    color: #666;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.manage_left li .a_active {
+    color: white;
+}
+
+/*fav_list*/
+.fav_list {
+    width: 1210px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+}
+
+.fav_list ul {
+    width: auto;
+    display: inline-block;
+}
+
+.fav_list ul li {
+    float: left;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #cdcdcd;
+    text-align: center;
+    background-color: #fdfffc;
+    margin-right: 18px;
+}
+
+.fav_list ul li a {
+    color: #1d1d1d;
+}
+
+.fav_list ul li a:hover {
+    color: #f99a52;
+    display: block;
+}
+
+.fav_list ul .more {
+    width: 60px;
+}
+
+.floor_rightBox {
+    width: 37px;
+    height: 88px;
+    margin-right: -648px;
+    bottom: 30px;
+    position: fixed;
+    right: 45%;
+    text-align: center;
+    z-index: 500;
+}
+
+.floor_rightBox .floor_top {
+    width: 37px;
+    height: 37px;
+    display: inline-block;
+    background-color: #bfbfbf;
+    border-radius: 50%;
+}
+
+.floor_top:hover {
+    background-color: #abd45b;
+}
+
+.floor_top img {
+    display: inline-block;
+    width: 23px;
+    height: 25px;
+    margin-top: 5px;
+    text-align: center;
+}

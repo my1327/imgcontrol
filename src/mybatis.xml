@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="config.properties" />
+
+	<settings>
+		<setting name="defaultStatementTimeout" value="10" />
+	</settings>
+
+	<typeAliases>
+		<package name="org.dragonscale.models" />
+	</typeAliases>
+
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${db_driver}" />
+				<property name="url" value="${db_url}" />
+				<property name="username" value="${db_user}" />
+				<property name="password" value="${db_password}" />
+				<property name="poolPingEnabled" value="true" />
+				<property name="poolPingQuery" value="select now()" />
+				<property name="poolPingConnectionsNotUsedFor" value="3600000" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<package name="org.dragonscale.mappers" />
+	</mappers>
+</configuration>
